@@ -4,9 +4,9 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const colors = require('colors');
 const errorController = require('./controllers/errorController');
+const dotenv = require('dotenv');
 
-const PORT = process.env.PORT || 8080;
-
+dotenv.config();
 const app = express();
 
 //* Setup body-parser
@@ -35,6 +35,6 @@ app.use(mainRoutes);
 app.use(errorController.get404);
 
 //* Start server
-app.listen(PORT, () => {
-  console.log(`Server running on port :${PORT}`.magenta.underline);
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port :${process.env.PORT}`.magenta.underline);
 });
