@@ -22,7 +22,7 @@ app.engine(
   })
 );
 app.set('view engine', '.hbs');
-app.set('views', 'backend/views');
+app.set('views', 'src/views');
 
 //* Setup morgan to log calls
 app.use(morgan('dev'));
