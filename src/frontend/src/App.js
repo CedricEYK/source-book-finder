@@ -6,7 +6,10 @@ function App() {
   return (
     <>
       <HeaderCmpnt />
-      <h1>Holla if hear me</h1>
+      <div className="container">
+        <h1>Holla if hear me</h1>
+      </div>
+
       <FooterCmpnt />
     </>
   );
