@@ -1,8 +1,14 @@
+import React from 'react';
+import HeaderCmpnt from './components/Header';
+import FooterCmpnt from './components/Footer';
+
 function App() {
   return (
-    <div>
+    <>
+      <HeaderCmpnt />
       <h1>Holla if hear me</h1>
-    </div>
+      <FooterCmpnt />
+    </>
   );
 }
 

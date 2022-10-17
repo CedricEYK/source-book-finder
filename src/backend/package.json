@@ -2,10 +2,10 @@
   "name": "src",
   "version": "1.0.0",
   "description": "project shows books listed in the source on wikipedia pages",
-  "main": "src/app.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon backend/src/app.js"
+    "start": "nodemon backend/src/server.js"
   },
   "author": "",
   "license": "ISC",
