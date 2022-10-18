@@ -37,6 +37,6 @@ server.use(errorController.get404);
 //* Start server
 server.listen(process.env.PORT, () => {
   console.log(
-    `Server running on port :${process.env.PORT} ;)`.yellow.underline
+    `Server running on port :${process.env.PORT}  ( ͡~ ͜ʖ ͡°)`.yellow.underline
   );
 });
