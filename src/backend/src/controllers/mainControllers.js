@@ -43,7 +43,7 @@ exports.postSearch = async (req, res, next) => {
             bookKey: '',
           };
           (bookObj.bookTitle = olObj.data.title),
-            (bookObj.bookKey = `https://openlibrary.org ${olObj.data.key}`);
+            (bookObj.bookKey = `https://openlibrary.org${olObj.data.key}`);
           booksFound.push(bookObj);
         }
       } catch (error) {
@@ -51,21 +51,21 @@ exports.postSearch = async (req, res, next) => {
           console.log(error.response.statusText);
         } else if (error.request) {
           console.log(error.request);
-        } else {
-          next();
         }
       }
     }
+
     //? Turn into JSON object for later
-    let jsonBookList = JSON.stringify(booksFound);
-    //JSON.parse(jsonBookList);
-    console.log(jsonBookList);
-    //console.log(booksFound);
+    // let jsonBookList = JSON.stringify(booksFound);
+    // JSON.parse(jsonBookList);
+    //console.log(jsonBookList);
+
+    console.log(booksFound);
     // TODO: Fix this
-    res.send(jsonBookList);
-    // res.render('index.hbs', {
-    //   booksAvailable: booksFound,
-    // });
+    //res.send(jsonBookList);
+    res.render('index.hbs', {
+      booksAvailable: booksFound,
+    });
   } catch (err) {
     console.log(err);
   }
