@@ -25,7 +25,7 @@ function Form() {
   return (
     <Card>
       <form>
-        <h2>Paste a Wikipedia link here</h2>
+        <h3>Paste a Wikipedia link here to find the books listed in the source</h3>
         <div className='input-group'>
           <input
             onChange={handleTextChange}

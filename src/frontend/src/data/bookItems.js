@@ -12,7 +12,7 @@ const OLitem = [
   {
     id: 3,
     title: 'Book three',
-    link: 'url',
+    link: 'https://openlibrary.org/books/OL9449950M',
   },
 ];
 
