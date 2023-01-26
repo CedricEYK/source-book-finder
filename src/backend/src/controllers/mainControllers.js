@@ -16,13 +16,18 @@ exports.postSearch = async (req, res, next) => {
     const scrappedIsbns = await axios(url);
     if (res.statusCode == 200) {
       const $ = cheerio.load(scrappedIsbns.data);
-      $.parseHTML();
+      $.html();
+      const thehtml = $('bdi').text();
+      let soned = JSON.stringify(thehtml);
+      //JSON.parse(soned);
       const myel = $('bdi').each((i, el) => {
         const item = $(el).text();
         item.toString();
         isbns.push(item);
+        console.log(isbns);
       });
     }
+
     //* Concatonate the extracted isbns from the array with the
     //* url string
     const urlndIsbn = isbns.map((el) => {
@@ -60,7 +65,7 @@ exports.postSearch = async (req, res, next) => {
     // JSON.parse(jsonBookList);
     //console.log(jsonBookList);
 
-    console.log(booksFound);
+    //console.log(booksFound);
     // TODO: Fix this
     //res.send(jsonBookList);
     res.render('index.hbs', {
