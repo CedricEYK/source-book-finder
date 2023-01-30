@@ -6,7 +6,7 @@ const { index } = require('cheerio/lib/api/traversing');
 
 const scrapperFnc = ($) => {
   const bdis = $('bdi');
-  const isbnData = [];
+  isbnData = [];
 
   bdis.each((index, el) => {
     const code = {};
