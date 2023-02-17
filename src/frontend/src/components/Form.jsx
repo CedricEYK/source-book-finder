@@ -1,46 +1,38 @@
-import React from 'react'
-import { useState } from 'react'
-import Card from './shared/Card'
-import Button from './shared/Button'
+import React, { useState, useContext } from 'react';
+import Card from './shared/Card';
+import Button from './shared/Button';
+import OpenLibraryContext from '../context/olBookContext';
 
 function Form() {
-  const [text, setText] = useState('')
-  const [btnDisabled, setBtnDisabled] = useState(true)
-  const [message, setMessage] = useState('')
+  const [searchQuery, setSearchQuery] = useState('');
+  const { fetchApiItems } = useContext(OpenLibraryContext);
 
-  const handleTextChange = (e) => {
-    if (text === '') {
-      setBtnDisabled(true)
-      setMessage(null)
-    } else if (text !== '' && text.trim().length <= 5) {
-      setMessage('Counting text')
-      setBtnDisabled(true)
-    } else {
-      setMessage(null)
-      setBtnDisabled(false)
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      await fetchApiItems(searchQuery);
+    } catch (error) {
+      console.log(error);
     }
-    setText(e.target.value)
-  }
+  };
 
   return (
     <Card>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h3>Paste a Wikipedia link here to find the books listed in the source</h3>
         <div className='input-group'>
           <input
-            onChange={handleTextChange}
-            type="text"
+            type='text'
             placeholder='Paste the link here'
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
           />
-
-          
         </div>
-        {message && <div className='message'>{ message }</div>}
-        <Button type='submit' isDisabled={btnDisabled}>Send</Button>
-        
+        <Button type='submit'>Search</Button>
       </form>
     </Card>
-  )
+  );
 }
 
-export default Form
+export default Form;

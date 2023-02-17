@@ -1,17 +1,26 @@
-import React from 'react'
-import BookItem from './BookItem'
+import React, { useContext, useEffect } from 'react';
+import OpenLibraryContext from '../context/olBookContext';
+import BookItem from './BookItem';
 
-function BookItemList({ bookItem }) {
-  if (!BookItem || bookItem.length === 0) {
-    return <p>No Items Yet</p>
+function BookItemList() {
+  const { apiItems, fetchApiItems } = useContext(OpenLibraryContext);
+
+  useEffect(() => {
+    fetchApiItems();
+  }, []);
+
+  if (!apiItems || apiItems.length === 0) {
+    return <p>No Books have been received yet</p>;
+    
   }
+
   return (
-    <div className='feedback-list'>
-      {bookItem.map((item) => (
-        <BookItem key={item.id} item={ item} />
+    <div className="feedback-list">
+      {apiItems.map((item, index) => (
+        <BookItem  key={item.id} item={item} />
       ))}
     </div>
-  )
+  );
 }
 
-export default BookItemList
+export default BookItemList;
