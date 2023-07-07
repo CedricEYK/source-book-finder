@@ -12,8 +12,9 @@ function Form() {
 
     try {
       await fetchApiItems(searchQuery);
+      setSearchQuery('')
     } catch (error) {
-      console.log(error);
+      console.log(error); 
     }
   };
 

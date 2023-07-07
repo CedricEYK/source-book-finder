@@ -36,7 +36,7 @@ export const BookProvider = ({ children }) => {
         }
       );
       const data = await response.data;
-
+      //console.log(response)
       setApiItems(data);
     } catch (error) {
       console.log(error);
